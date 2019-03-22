@@ -2,6 +2,8 @@ import { hot } from 'react-hot-loader';
 import React from 'react';
 import { connect } from 'react-redux';
 import actions from '../actions';
+import {Layout, Menu} from 'antd';
+const {Header, Content, Footer} = Layout;
 
 import './index.less';
 
@@ -17,10 +19,28 @@ class Container extends React.Component {
 
   render() {
     return (
-      <div className="page">
-        <h1>Redux Example</h1>
-        <p>Hello, {this.props.greeting}</p>
-      </div>
+      <Layout>
+        <Header>
+          <div className="logo" />
+          <Menu
+            theme="dark"
+            mode="horizontal"
+            defaultSelectedKeys={['2']}
+            style={{ lineHeight: '64px' }}
+          >
+            <Menu.Item key="1">nav 1</Menu.Item>
+            <Menu.Item key="2">nav 2</Menu.Item>
+            <Menu.Item key="3">nav 3</Menu.Item>
+          </Menu>
+        </Header>
+        <Content>
+          <div className="page">
+            <h1>Redux Example</h1>
+            <p>Hello, {this.props.greeting}</p>
+          </div>
+        </Content>
+        <Footer></Footer>
+      </Layout>
     );
   }
 }
