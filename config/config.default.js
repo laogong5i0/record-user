@@ -4,6 +4,11 @@ const path = require('path');
 
 module.exports = appInfo => ({
   keys: 'secret',
+  webpack: {
+    custom: {
+      configPath: path.join(__dirname, './webpack.config.js'),
+    },
+  },
   router: {
     entry: 'page',
   },

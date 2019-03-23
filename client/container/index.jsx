@@ -2,10 +2,10 @@ import { hot } from 'react-hot-loader';
 import React from 'react';
 import { connect } from 'react-redux';
 import actions from '../actions';
-import {Layout, Menu} from 'antd';
-const {Header, Content, Footer} = Layout;
+import { Layout, Menu, Button } from 'antd';
+const { Header, Content, Footer } = Layout;
 
-import './index.less';
+import './index.scss';
 
 class Container extends React.Component {
   constructor() {
@@ -33,10 +33,12 @@ class Container extends React.Component {
             <Menu.Item key="3">nav 3</Menu.Item>
           </Menu>
         </Header>
-        <Content>
+        <Content className="app">
+          test color
           <div className="page">
             <h1>Redux Example</h1>
             <p>Hello, {this.props.greeting}</p>
+            <Button type="primary">test</Button>
           </div>
         </Content>
         <Footer></Footer>

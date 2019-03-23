@@ -6,6 +6,7 @@ import App from './container';
 import configureStore from './store';
 import { run } from './saga';
 
+
 /**
  * custom view template
  *
@@ -65,7 +66,15 @@ export default class View extends React.Component {
       <html>
         <head>
           <title>Beidou example redux</title>
+          {/* <link
+          rel="stylesheet"
+          href="https://unpkg.com/antd@3.10.9/dist/antd.min.css"
+        /> */}
+          <link rel="stylesheet" href={helper.asset('nprogress.css')} />
+          {/* <link rel="stylesheet" href={helper.asset('manifest.css')} /> */}
           <link rel="stylesheet" href={helper.asset('index.css')} />
+          {/* <link rel="stylesheet" href={helper.asset('antd/dist/antd.css')} /> */}
+          {/* <link rel="stylesheet" href={helper.asset(`${asset}.css`)} /> */}
         </head>
         <body>
           <div id="container" dangerouslySetInnerHTML={{ __html: html }} />
@@ -74,6 +83,7 @@ export default class View extends React.Component {
               __html: `window.__INITIAL_STATE__ = ${state}`,
             }}
           />
+          <script src={helper.asset('nprogress.js')} />
           <script src={helper.asset('manifest.js')} />
           <script src={helper.asset('index.js')} />
         </body>

@@ -17,6 +17,8 @@
     "beidou": "^2.0.5",
     "beidou-cli": "^2.0.1",
     "classnames": "^2.2.3",
+    "node-sass": "^4.11.0",
+    "nprogress": "^0.2.0",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-hot-loader": "^4.1.2",
@@ -24,11 +26,14 @@
     "redux": "^3.7.2",
     "redux-actions": "^2.2.1",
     "redux-saga": "^0.16.0",
-    "reqwest": "^2.0.5"
+    "reqwest": "^2.0.5",
+    "sass": "^1.17.3",
+    "sass-loader": "^7.1.0"
   },
   "devDependencies": {
     "autoprefixer": "^6.5.3",
     "babel-eslint": "^7.1.1",
+    "copy-webpack-plugin": "^5.0.2",
     "eslint": "^4.11.0",
     "eslint-config-beidou": "^2.0.1",
     "eslint-plugin-import": "^2.8.0",
