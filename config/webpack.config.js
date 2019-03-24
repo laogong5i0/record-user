@@ -19,10 +19,10 @@ module.exports = (app, defaultConfig) => {
 
   return {
     ...defaultConfig,
-    // entry: {
-    //   login: [path.join(__dirname, '../client/pages/login/index.jsx')],
-    //   main: [path.join(__dirname, '../client/pages/dashboard/index.jsx')],
-    // },
+    entry: {
+      login: [path.join(__dirname, '../client/index.jsx')],
+      // main: [path.join(__dirname, '../client/pages/dashboard/index.jsx')],
+    },
     // externals: {
     //   //   react: 'React',
     //   //   'react-dom': 'ReactDOM',

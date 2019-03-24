@@ -3,6 +3,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import actions from '../actions';
 import { Layout, Menu, Button } from 'antd';
+import { Link } from 'react-router-dom';
 const { Header, Content, Footer } = Layout;
 
 import './index.scss';
@@ -40,6 +41,8 @@ class Container extends React.Component {
             <p>Hello, {this.props.greeting}</p>
             <Button type="primary">test</Button>
           </div>
+          <Link to="/login">login
+          </Link>
         </Content>
         <Footer></Footer>
       </Layout>

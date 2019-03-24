@@ -2,10 +2,15 @@ import 'babel-polyfill';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import App from './container';
+import { StaticRouter } from 'react-router';
+import { BrowserRouter } from 'react-router-dom';
+// import App from './container';
 import configureStore from './store';
-import { run } from './saga';
+import reducers from './reducers';
+import saga, { run } from './saga';
+import routes from './routes';
 
+const Router = __CLIENT__ ? BrowserRouter : StaticRouter;
 
 /**
  * custom view template
@@ -14,17 +19,25 @@ import { run } from './saga';
  * @class View
  * @extends {React.Component}
  */
-export default class View extends React.Component {
-  static doctype = '<!DOCTYPE html>';
+export default class RouteView extends React.Component {
+  // static doctype = '<!DOCTYPE html>';
+  static contextTypes = {
+    router: PropTypes.object.isRequired,
+  };
 
+  static defaultProps = {
+    title: 'recode index',
+    asset: 'login',
+  };
   /**
    * construct store for server side
    */
-  static getStore() {
+  static getStore({ctx}) {
     const store = configureStore({
       greeting: 'beidou',
-    });
-
+    }, reducers, saga);
+    console.log('==================', store);
+    store.dispatch(actions.user.fetchSuccess(users));
     return store;
   }
 
@@ -51,10 +64,25 @@ export default class View extends React.Component {
    *
    * @returns {ReactInstance|Array<ReactInstance>}
    */
-  static getPartial({ store }) {
+  static getPartial({ store, ctx }) {
+    const props = {};
+    if (ctx && ctx.url) {
+      props.location = ctx.url;
+      props.context = {
+        location: {
+          pathname: ctx.pathname,
+        },
+      };
+    }
+
+    console.log('j======', store)
     const html = (
       <Provider store={store}>
-        <App />
+        <Router {...props}>
+          {/* {routes} */}
+        </Router>
+        {/* <App /> */}
+
       </Provider>
     );
     return { html };
@@ -62,14 +90,12 @@ export default class View extends React.Component {
 
   render() {
     const { html, state, helper } = this.props;
+    console.log('=------JJJ', html);
     return (
       <html>
         <head>
           <title>Beidou example redux</title>
-          {/* <link
-          rel="stylesheet"
-          href="https://unpkg.com/antd@3.10.9/dist/antd.min.css"
-        /> */}
+
           <link rel="stylesheet" href={helper.asset('nprogress.css')} />
           {/* <link rel="stylesheet" href={helper.asset('manifest.css')} /> */}
           <link rel="stylesheet" href={helper.asset('index.css')} />
@@ -98,14 +124,21 @@ export default class View extends React.Component {
  */
 if (__CLIENT__) {
   const store = configureStore(window.__INITIAL_STATE__);
+
+  console.log('client:======', store)
   const app = (
     <Provider store={store}>
-      <App />
+      {/* <App /> */}
+      <Router>
+        {routes}
+      </Router>
+
     </Provider>
   );
 
   // run saga
   run();
 
-  ReactDOM.render(app, document.getElementById('container'));
+  // ReactDOM.render(app, document.getElementById('container'));
+  ReactDOM.hydrate(app, document.getElementById('container'));
 }

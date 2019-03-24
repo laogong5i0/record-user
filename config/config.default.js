@@ -10,6 +10,7 @@ module.exports = appInfo => ({
     },
   },
   router: {
+    // root:'/pages',
     entry: 'page',
   },
   static: {
