@@ -1,55 +1,139 @@
-import { hot } from 'react-hot-loader';
+import 'babel-polyfill';
 import React from 'react';
-import { connect } from 'react-redux';
-import actions from '../actions';
-import { Layout, Menu, Button } from 'antd';
-import { Link } from 'react-router-dom';
-const { Header, Content, Footer } = Layout;
+import PropTypes from 'prop-types';
+import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux';
+import { StaticRouter } from 'react-router';
+import { BrowserRouter } from 'react-router-dom';
+// import App from './container';
+import configureStore from '../store';
+import reducers from '../reducers';
+import saga, { run } from '../saga';
+import routes from './routes';
 
-import './index.scss';
+const Router = __CLIENT__ ? BrowserRouter : StaticRouter;
 
-class Container extends React.Component {
-  constructor() {
-    super();
-    this.state = {};
+/**
+ * custom view template
+ *
+ * @export
+ * @class View
+ * @extends {React.Component}
+ */
+export default class RouteView extends React.Component {
+  // static doctype = '<!DOCTYPE html>';
+  static contextTypes = {
+    router: PropTypes.object.isRequired,
+  };
+
+  static defaultProps = {
+    title: 'recode index',
+    asset: 'login',
+  };
+  /**
+   * construct store for server side
+   */
+  static async getStore({ ctx }) {
+    const store = configureStore({
+      greeting: 'beidou',
+    });
+    // store.dispatch(actions.user.fetchSuccess(users));
+    return store;
   }
 
-  componentDidMount() {
-    this.props.dispatch(actions.greet());
+  /**
+   *
+   * @param {Object} locals server context variables
+   * ```
+   * {
+   *    ctx: egg/koa context
+   *    helper: view helper
+   *    render: server side renderToString of react or renderToStaticMarkup
+   *      if `config.react.static = true`
+   *    renderToString
+   *    renderToStaticMarkup
+   *    request: http request object
+   *    {
+   *      ...
+   *      req,
+   *      res,
+   *      ...
+   *    }
+   * }
+   * ```
+   *
+   * @returns {ReactInstance|Array<ReactInstance>}
+   */
+  static getPartial({ store, ctx }) {
+    const props = {};
+    if (ctx && ctx.url) {
+      props.location = ctx.url;
+      props.context = {
+        location: {
+          pathname: ctx.pathname,
+        },
+      };
+    }
+
+    const html = (
+      <Provider store={store}>
+        <Router {...props}>
+          {routes}
+        </Router>
+        {/* <App /> */}
+      </Provider>
+    );
+    return { html };
   }
 
   render() {
+    const { title, asset, html, state, helper } = this.props;
     return (
-      <Layout>
-        <Header>
-          <div className="logo" />
-          <Menu
-            theme="dark"
-            mode="horizontal"
-            defaultSelectedKeys={['2']}
-            style={{ lineHeight: '64px' }}
-          >
-            <Menu.Item key="1">nav 1</Menu.Item>
-            <Menu.Item key="2">nav 2</Menu.Item>
-            <Menu.Item key="3">nav 3</Menu.Item>
-          </Menu>
-        </Header>
-        <Content className="app">
-          test color
-          <div className="page">
-            <h1>Redux Example</h1>
-            <p>Hello, {this.props.greeting}</p>
-            <Button type="primary">test</Button>
-          </div>
-          <Link to="/login">login
-          </Link>
-        </Content>
-        <Footer></Footer>
-      </Layout>
+      <html>
+        <head>
+          <title>{title}</title>
+
+          <link rel="stylesheet" href={helper.asset('nprogress.css')} />
+          {/* <link rel="stylesheet" href={helper.asset('manifest.css')} /> */}
+          {/* <link rel="stylesheet" href={helper.asset('index.css')} /> */}
+          {/* <link rel="stylesheet" href={helper.asset('antd/dist/antd.css')} /> */}
+          <link rel="stylesheet" href={helper.asset(`${asset}.css`)} />
+        </head>
+        <body>
+          <div id="container" dangerouslySetInnerHTML={{ __html: html }} />
+          <script
+            dangerouslySetInnerHTML={{
+              __html: `window.__INITIAL_STATE__ = ${state}`,
+            }}
+          />
+          <script src={helper.asset('nprogress.js')} />
+          <script src={helper.asset('manifest.js')} />
+          <script src={helper.asset('index.js')} />
+        </body>
+      </html>
     );
   }
 }
 
-const ConnectedContainer = connect(state => state)(Container);
+/**
+ * client scope, wrapped in __CLIENT__ detect block
+ * only run in client side
+ */
+if (__CLIENT__) {
+  const store = configureStore(window.__INITIAL_STATE__);
+  const app = (
+    <Provider store={store}>
+      <Router {...props}>
+        {routes}
+      </Router>
 
-export default hot(module)(ConnectedContainer);
+    </Provider>
+  );
+
+  // run saga
+  run();
+  // saga.run();
+
+  ReactDOM.render(app, document.getElementById('container'));
+  // ReactDOM.hydrate(app, document.getElementById('container'));
+}

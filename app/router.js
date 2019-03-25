@@ -5,8 +5,8 @@ module.exports=(app)=>{
   router.resources(`${api_name_space}/user`, controller.baseController);
   router.resources(`${api_name_space}/login_api`, controller.login);
 
-  app.get('testCpi', `${api_name_space}/testapi`, controller.user.index);
-  app.get(
+  // app.get('testCpi', `${api_name_space}/testapi`, controller.user.index);
+  router.get(
     'routes',
     '/*',
     controller.routes.show

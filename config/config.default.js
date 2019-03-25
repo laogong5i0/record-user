@@ -10,7 +10,7 @@ module.exports = appInfo => ({
     },
   },
   router: {
-    // root:'/pages',
+    root:'/containerddd',
     entry: 'page',
   },
   static: {

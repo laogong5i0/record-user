@@ -5,7 +5,7 @@ module.exports = (app) => {
     // }
 
     async show() {
-      await this.ctx.render('container');
+      await this.ctx.render('container', {te:'jjj'});
     }
   }
   return RoutesController;

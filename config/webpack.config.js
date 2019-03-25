@@ -20,7 +20,7 @@ module.exports = (app, defaultConfig) => {
   return {
     ...defaultConfig,
     entry: {
-      login: [path.join(__dirname, '../client/index.jsx')],
+      login: [path.join(__dirname, '../client/container/index.jsx')],
       // main: [path.join(__dirname, '../client/pages/dashboard/index.jsx')],
     },
     // externals: {
