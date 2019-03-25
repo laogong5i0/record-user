@@ -3,9 +3,9 @@ module.exports=(app)=>{
   const api_name_space = '/jsapi';
   
   router.resources(`${api_name_space}/user`, controller.baseController);
-  router.resources(`${api_name_space}/login_api`, controller.login);
+  router.resources(`${api_name_space}/login_api`, controller.login.create);
 
-  // app.get('testCpi', `${api_name_space}/testapi`, controller.user.index);
+  router.get('login', `/login`, controller.login.show);
   router.get(
     'routes',
     '/*',

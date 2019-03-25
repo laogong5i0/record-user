@@ -1,8 +1,8 @@
 import BaseController,{returnBody} from './baseController'
 
 class Login extends BaseController {
-  async index(){
-    this.create()
+  async show(){
+    await this.ctx.render('container');
   }
   async create() {
     const { ctx } = this;
@@ -10,6 +10,7 @@ class Login extends BaseController {
     ctx.body=returnBody;
     ctx.status = 200;
   }
+
 }
 
 module.exports = Login

@@ -16,9 +16,11 @@ class Container extends React.Component {
 
   componentDidMount() {
     this.props.dispatch(actions.greet());
+    
   }
 
   render() {
+    const {greeting} = this.props;
     return (
       <Layout>
         <Header>
@@ -36,6 +38,7 @@ class Container extends React.Component {
         </Header>
         <Content className="app">
           test color
+          <div>test reload</div>
           <div className="page">
             <h1>Redux Example</h1>
             <p>Hello, {this.props.greeting}</p>

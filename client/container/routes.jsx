@@ -1,6 +1,6 @@
 import React from 'react';
 import { Route, Switch } from 'react-router';
-import Login from './pages/login';
+import Login from './login';
 import App from './pages';
 // import NullPage from './404';
 import NullPage from '../components/404';

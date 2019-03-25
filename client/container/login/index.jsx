@@ -9,6 +9,8 @@ class Login extends React.Component {
     super();
     this.state = {};
   }
+  componentDidMount(){
+  }
   render(){
     return (
       <Layout>

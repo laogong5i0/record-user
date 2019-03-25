@@ -21,10 +21,10 @@ const Router = __CLIENT__ ? BrowserRouter : StaticRouter;
  * @extends {React.Component}
  */
 export default class RouteView extends React.Component {
-  // static doctype = '<!DOCTYPE html>';
-  static contextTypes = {
-    router: PropTypes.object.isRequired,
-  };
+  static doctype = '<!DOCTYPE html>';
+  // static contextTypes = {
+  //   router: PropTypes.object.isRequired,
+  // };
 
   static defaultProps = {
     title: 'recode index',
@@ -80,7 +80,6 @@ export default class RouteView extends React.Component {
         <Router {...props}>
           {routes}
         </Router>
-        {/* <App /> */}
       </Provider>
     );
     return { html };
@@ -91,10 +90,16 @@ export default class RouteView extends React.Component {
     return (
       <html>
         <head>
+          <meta charSet="UTF-8" />
+          <meta name="viewport" content="width=device-width,initial-scale=1" />
+          <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
+          <meta
+            name="description"
+            content="用户记录后台，地图测试"
+          />
           <title>{title}</title>
-
           <link rel="stylesheet" href={helper.asset('nprogress.css')} />
-          {/* <link rel="stylesheet" href={helper.asset('manifest.css')} /> */}
+          <link rel="stylesheet" href={helper.asset('manifest.css')} />
           {/* <link rel="stylesheet" href={helper.asset('index.css')} /> */}
           {/* <link rel="stylesheet" href={helper.asset('antd/dist/antd.css')} /> */}
           <link rel="stylesheet" href={helper.asset(`${asset}.css`)} />
@@ -108,7 +113,8 @@ export default class RouteView extends React.Component {
           />
           <script src={helper.asset('nprogress.js')} />
           <script src={helper.asset('manifest.js')} />
-          <script src={helper.asset('index.js')} />
+          <script src={helper.asset(`${asset}.js`)} />
+          {/* <script src={helper.asset('index.js')} /> */}
         </body>
       </html>
     );
@@ -123,10 +129,9 @@ if (__CLIENT__) {
   const store = configureStore(window.__INITIAL_STATE__);
   const app = (
     <Provider store={store}>
-      <Router {...props}>
+      <Router>
         {routes}
       </Router>
-
     </Provider>
   );
 
