@@ -18,7 +18,6 @@
     "beidou-cli": "^2.0.1",
     "classnames": "^2.2.3",
     "core-js": "^3.0.0",
-    "node-sass": "^4.11.0",
     "nprogress": "^0.2.0",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
@@ -29,9 +28,7 @@
     "redux": "^3.7.2",
     "redux-actions": "^2.2.1",
     "redux-saga": "^0.16.0",
-    "reqwest": "^2.0.5",
-    "sass": "^1.17.3",
-    "sass-loader": "^7.1.0"
+    "reqwest": "^2.0.5"
   },
   "devDependencies": {
     "autoprefixer": "^6.5.3",

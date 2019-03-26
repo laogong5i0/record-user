@@ -20,6 +20,7 @@ module.exports = (app, defaultConfig) => {
   return {
     ...defaultConfig,
     entry: {
+      index: [path.join(__dirname, '../client/container/index.jsx')],
       login: [path.join(__dirname, '../client/container/index.jsx')],
       // main: [path.join(__dirname, '../client/pages/dashboard/index.jsx')],
     },
@@ -29,7 +30,7 @@ module.exports = (app, defaultConfig) => {
     //   antd: true,
     // },
     resolve: {
-      extensions: ['.json', '.js', '.jsx', '.sass', '.less'],
+      extensions: ['.json', '.js', '.jsx'],
       alias: {
         client: path.join(__dirname, '../client'),
         themes: path.join(__dirname, '../client/themes'),

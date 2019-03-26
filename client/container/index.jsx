@@ -28,7 +28,7 @@ export default class RouteView extends React.Component {
 
   static defaultProps = {
     title: 'recode index',
-    asset: 'login',
+    asset: 'index',
   };
   /**
    * construct store for server side

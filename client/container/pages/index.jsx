@@ -6,7 +6,8 @@ import { Layout, Menu, Button } from 'antd';
 import { Link } from 'react-router-dom';
 const { Header, Content, Footer } = Layout;
 
-import './index.scss';
+import '../../themes/theme.less';
+// import styles from './index.module.less';
 
 class Container extends React.Component {
   constructor() {

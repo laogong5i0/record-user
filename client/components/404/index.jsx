@@ -5,7 +5,7 @@ import { Layout, Menu, Button } from 'antd';
 import { Link } from 'react-router-dom';
 const { Content } = Layout;
 
-import './index.scss';
+import './index.less';
 
 export default class NullPage extends React.Component {
   constructor() {

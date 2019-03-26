@@ -1,8 +1,12 @@
 import { hot } from 'react-hot-loader';
 import React from 'react';
 import { connect } from 'react-redux';
-import { Layout, Menu, Button } from 'antd';
-const { Header, Content, Footer } = Layout;
+import { Layout } from 'antd';
+import classNames from 'classnames/bind';
+import WrappedNormalLoginForm from "../../components/login";
+import style from './index.module.less';
+
+const cx = classNames.bind(style);
 
 class Login extends React.Component {
   constructor() {
@@ -13,8 +17,8 @@ class Login extends React.Component {
   }
   render(){
     return (
-      <Layout>
-        sfffjj
+      <Layout className={cx('form')}>
+        <WrappedNormalLoginForm></WrappedNormalLoginForm>
       </Layout>
     )
   }
