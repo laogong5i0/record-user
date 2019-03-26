@@ -11,6 +11,8 @@ import reducers from '../reducers';
 import saga, { run } from '../saga';
 import routes from './routes';
 
+import "./index.less";
+
 const Router = __CLIENT__ ? BrowserRouter : StaticRouter;
 
 /**
@@ -99,7 +101,7 @@ export default class RouteView extends React.Component {
           />
           <title>{title}</title>
           <link rel="stylesheet" href={helper.asset('nprogress.css')} />
-          <link rel="stylesheet" href={helper.asset('manifest.css')} />
+          {/* <link rel="stylesheet" href={helper.asset('manifest.css')} /> */}
           {/* <link rel="stylesheet" href={helper.asset('index.css')} /> */}
           {/* <link rel="stylesheet" href={helper.asset('antd/dist/antd.css')} /> */}
           <link rel="stylesheet" href={helper.asset(`${asset}.css`)} />

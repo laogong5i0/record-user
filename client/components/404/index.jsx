@@ -4,8 +4,10 @@ import { connect } from 'react-redux';
 import { Layout, Menu, Button } from 'antd';
 import { Link } from 'react-router-dom';
 const { Content } = Layout;
+import style from './index.m.less';
+import classNames from 'classnames/bind';
+const cx = classNames.bind(style);
 
-import './index.less';
 
 export default class NullPage extends React.Component {
   constructor() {
@@ -16,7 +18,7 @@ export default class NullPage extends React.Component {
     return (
       <Layout>
 
-        <Content className="app">
+        <Content className={cx('error')}>
         <div>page no found~ </div>
           <Link to="/">404
           </Link>

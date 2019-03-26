@@ -3,11 +3,13 @@ import React from 'react';
 import { connect } from 'react-redux';
 import actions from '../../actions';
 import { Layout, Menu, Button } from 'antd';
+import classNames from 'classnames/bind';
 import { Link } from 'react-router-dom';
 const { Header, Content, Footer } = Layout;
 
-import '../../themes/theme.less';
-// import styles from './index.module.less';
+import style from './index.module.less';
+const cx = classNames.bind(style);
+
 
 class Container extends React.Component {
   constructor() {
@@ -23,8 +25,8 @@ class Container extends React.Component {
   render() {
     const {greeting} = this.props;
     return (
-      <Layout>
-        <Header>
+      <Layout className={cx('content')}>
+        <Header className={cx('header')}>
           <div className="logo" />
           <Menu
             theme="dark"

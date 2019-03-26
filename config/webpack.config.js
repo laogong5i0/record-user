@@ -30,14 +30,30 @@ module.exports = (app, defaultConfig) => {
     //   antd: true,
     // },
     resolve: {
-      extensions: ['.json', '.js', '.jsx'],
+      extensions: ['.json', '.js', '.jsx', '.less'],
       alias: {
         client: path.join(__dirname, '../client'),
         themes: path.join(__dirname, '../client/themes'),
       },
     },
     // module: {
-    //   rules:[]
+    //   rules: [{
+    //     test: /\.less$/,
+    //     use: [{
+    //       loader: 'style-loader',
+    //     }, {
+    //       loader: 'css-loader', // translates CSS into CommonJS
+    //     }, {
+    //       loader: 'less-loader',
+    //       options: {
+    //         javascriptEnabled: true,
+    //       }
+    //     }]
+    //   }, {
+    //     test: /\.(js|jsx)$/,
+    //     exclude: /node_modules/,
+    //     loader: 'babel-loader'
+    //   }]
     // }
-  };
+  }
 };
