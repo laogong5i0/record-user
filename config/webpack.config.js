@@ -31,8 +31,9 @@ module.exports = (app, defaultConfig) => {
     resolve: {
       extensions: ['.json', '.js', '.jsx', '.sass', '.less'],
       alias: {
-        client: path.join(__dirname, '../client'),
-        themes: path.join(__dirname, '../client/themes'),
+        client: path.join(app.baseDir, 'client'),
+        themes: path.join(app.baseDir, 'client/themes'),
+        assets: path.join(__dirname, '../client/assets'),
       },
     },
     // module: {
