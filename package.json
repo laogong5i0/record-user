@@ -25,16 +25,17 @@
     "react-dom": "^16.2.0",
     "react-hot-loader": "^4.1.2",
     "react-redux": "^5.0.6",
+    "react-router": "^5.0.0",
+    "react-router-dom": "^5.0.0",
     "redux": "^3.7.2",
     "redux-actions": "^2.2.1",
     "redux-saga": "^0.16.0",
-    "reqwest": "^2.0.5",
-    "sass": "^1.17.3",
-    "sass-loader": "^7.1.0"
+    "reqwest": "^2.0.5"
   },
   "devDependencies": {
     "autoprefixer": "^6.5.3",
     "babel-eslint": "^7.1.1",
+    "babel-plugin-import": "^1.11.0",
     "copy-webpack-plugin": "^5.0.2",
     "eslint": "^4.11.0",
     "eslint-config-beidou": "^2.0.1",

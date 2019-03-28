@@ -19,17 +19,18 @@ module.exports = (app, defaultConfig) => {
 
   return {
     ...defaultConfig,
-    // entry: {
-    //   login: [path.join(__dirname, '../client/pages/login/index.jsx')],
-    //   main: [path.join(__dirname, '../client/pages/dashboard/index.jsx')],
-    // },
+    entry: {
+      index: [path.join(__dirname, '../client/container/index.jsx')],
+      login: [path.join(__dirname, '../client/container/index.jsx')],
+      // main: [path.join(__dirname, '../client/pages/dashboard/index.jsx')],
+    },
     // externals: {
     //   //   react: 'React',
     //   //   'react-dom': 'ReactDOM',
     //   antd: true,
     // },
     resolve: {
-      extensions: ['.json', '.js', '.jsx', '.sass', '.less'],
+      extensions: ['.json', '.js', '.jsx', '.less'],
       alias: {
         client: path.join(app.baseDir, 'client'),
         themes: path.join(app.baseDir, 'client/themes'),
@@ -37,7 +38,23 @@ module.exports = (app, defaultConfig) => {
       },
     },
     // module: {
-    //   rules:[]
+    //   rules: [{
+    //     test: /\.less$/,
+    //     use: [{
+    //       loader: 'style-loader',
+    //     }, {
+    //       loader: 'css-loader', // translates CSS into CommonJS
+    //     }, {
+    //       loader: 'less-loader',
+    //       options: {
+    //         javascriptEnabled: true,
+    //       }
+    //     }]
+    //   }, {
+    //     test: /\.(js|jsx)$/,
+    //     exclude: /node_modules/,
+    //     loader: 'babel-loader'
+    //   }]
     // }
-  };
+  }
 };
