@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 import actions from '../../actions'
 
 // import { Link } from 'react-router-dom';
-import logo from '../../assets/logo.png';
+import fire from '../../assets/fire.ico';
 import './index.less';
 
 class NormalLoginForm extends React.Component {
@@ -35,7 +35,7 @@ class NormalLoginForm extends React.Component {
     const {initialValue} = this.state;
     return (
       <Form onSubmit={this.handleSubmit} className="login-form">
-        <img width="100" height="100" src={logo}></img>
+        <img width="50" height="50" src={fire}></img>
         <Form.Item>
           {getFieldDecorator('name', {
             initialValue: initialValue.name,

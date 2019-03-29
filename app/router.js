@@ -3,12 +3,13 @@ module.exports=(app)=>{
   const api_name_space = '/jsapi';
   
   router.resources(`${api_name_space}/user`, controller.baseController);
-  router.resources(`${api_name_space}/login_api`, controller.login.create);
+  router.resources(`${api_name_space}/login`, controller.login);
 
   router.get('login', `/login`, controller.login.show);
+  // router.get('gst', `/gst`, controller.routes.showGst);
   router.get(
     'routes',
     '/*',
-    controller.routes.show
+    controller.routes.showGst
   );
 }
