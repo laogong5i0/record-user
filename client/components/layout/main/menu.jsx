@@ -7,34 +7,34 @@ import pathToRegexp from 'path-to-regexp';
 const { SubMenu } = Menu;
 
 export const config = [
+  // {
+  //   name: 'Dashboard',
+  //   icon: 'laptop',
+  //   route: '/dashboard',
+  // },
+  // {
+  //   name: 'GST',
+  //   icon: 'user',
+  //   route: '/gst',
+  // },
+  // {
+  //   name: 'Posts',
+  //   icon: 'shopping-cart',
+  //   route: '/post',
+  // },
   {
-    name: 'Dashboard',
-    icon: 'laptop',
-    route: '/dashboard',
-  },
-  {
-    name: 'Users',
-    icon: 'user',
-    route: '/user',
-  },
-  {
-    name: 'Posts',
-    icon: 'shopping-cart',
-    route: '/post',
-  },
-  {
-    name: 'Charts',
+    name: '固生堂信息集',
     icon: 'code-o',
     items: [
       {
-        name: 'ECharts',
-        icon: 'line-chart',
-        route: '/echarts',
+        name: '用户信息',
+        icon: 'user',
+        route: '/gst',
       },
       {
-        name: 'highCharts',
+        name: '协定配方',
         icon: 'bar-chart',
-        route: '/highcharts',
+        route: '/recipetemplate',
       },
       {
         name: 'Recharts',
@@ -46,7 +46,7 @@ export const config = [
 ];
 
 const Menus = ({ className, theme, siderFolded, location }) => {
-  let selected = 'Dashboard';
+  let selected = 'gst';
   const mapItems = items =>
     items.map((item) => {
       if (

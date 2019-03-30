@@ -11,9 +11,9 @@ import {withRouter} from 'react-router-dom';
 const cx = classNames.bind(style);
 
 class Layout extends React.Component {
-  static contextTypes = {
-    router: PropTypes.object.isRequired,
-  };
+  // static contextTypes = {
+  //   router: PropTypes.object.isRequired,
+  // };
 
   state = {
     siderFolded: false,
@@ -26,12 +26,9 @@ class Layout extends React.Component {
   };
 
   render() {
-    const { children ,history:{location}} = this.props;
+    // const { children ,history:{location}} = this.props;
+    const { children, location, context} = this.props;
     const { siderFolded } = this.state;
-    const {  } = this.context;
-    console.log('---33333333333333===>>', this.props);
-    console.log('---33333333333333', history, location);
-    console.log('---3333ddd33333111111113333333333', location);
     return (
       <div className={cx('layout', { fold: siderFolded })}>
         <Sider siderFolded={siderFolded} location={location} />
@@ -52,3 +49,4 @@ class Layout extends React.Component {
 }
 
 export default withRouter(Layout);
+// export default Layout;

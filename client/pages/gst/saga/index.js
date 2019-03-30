@@ -9,7 +9,6 @@ export const sagaMiddleware = createSagaMiddleware();
 function* fetchUser() {
   const res = yield axios.post('jsapi/login');
   if (res.statusText === 'OK') {
-    console.log('res==>', res);
     yield put(actions.user.fetchSuccess(res.data));
   } else {
     yield put(actions.user.fetchFailed(res.statusText || 'Request Error'));

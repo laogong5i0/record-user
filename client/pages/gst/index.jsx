@@ -17,7 +17,7 @@ const Router = __CLIENT__ ? BrowserRouter : StaticRouter;
 
 export default class RouteView extends View {
   static defaultProps = {
-    title: '固生堂用户集',
+    title: '固生堂信息集',
     asset: 'gst',
   };
 
@@ -25,7 +25,7 @@ export default class RouteView extends View {
     const store = configureStore(reducers, saga);
     // const users = await ctx.service.user.findAll();
     const users = {name: '', old: 43, address: 'gs'};
-    store.dispatch(actions.user.fetchSuccess(users));
+    store.dispatch(actions.user.fetch(users));
     return store;
   }
 

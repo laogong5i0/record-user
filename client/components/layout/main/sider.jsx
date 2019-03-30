@@ -5,7 +5,7 @@ import { Icon, Switch } from 'antd';
 import logo from 'client/assets/logo.png';
 import Menus from './menu';
 
-// import actions from '../actions';
+import actions from 'client/pages/gst/actions/common';
 
 import style from './sider.module.less';
 
@@ -36,8 +36,7 @@ const Sider = ({ dispatch, siderFolded, theme, location }) => (
           checkedChildren="Dark"
           unCheckedChildren="Light"
           onChange={checked =>
-            console.log('dddddddddddddddddddd', checked)
-            // dispatch(actions.common.toggleTheme(checked ? 'dark' : 'light'))
+            dispatch(actions.common.toggleTheme(checked ? 'dark' : 'light'))
           }
         />
       </div>

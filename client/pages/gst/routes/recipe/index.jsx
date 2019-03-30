@@ -5,7 +5,7 @@ import { Row, Col, Button, Popconfirm } from 'antd';
 import queryString from 'query-string';
 import Page from 'client/components/page';
 
-class User extends Component {
+class RecipeTemplate extends Component {
   constructor(props){
     super(props)
     // console.log('', this.props.location);
@@ -18,7 +18,7 @@ class User extends Component {
     // console.log('9999999999', this.props);
     return(
       <Page inner>
-        <div>000000</div>
+        <div>rrrr recipe template</div>
       </Page>
     )
   }
@@ -41,4 +41,4 @@ class User extends Component {
   // loading: PropTypes.object,
 // };
 
-export default connect(state => state.user)(User);
+export default connect(state => state.user)(RecipeTemplate);
