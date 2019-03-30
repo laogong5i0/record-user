@@ -5,7 +5,11 @@ module.exports = (app) => {
     // }
 
     async show() {
-      await this.ctx.render('container', {te:'jjj'});
+      await this.ctx.render('pages/login', {te:'jjj'});
+    }
+
+    async showGst(){
+      await this.ctx.render('pages/gst');
     }
   }
   return RoutesController;

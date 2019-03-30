@@ -2,12 +2,13 @@ import BaseController,{returnBody} from './baseController'
 
 class Login extends BaseController {
   async show(){
-    await this.ctx.render('container');
+    await this.ctx.render('pages/login');
   }
   async create() {
     const { ctx } = this;
     ctx.rotateCsrfSecret();
-    ctx.body=returnBody;
+    const data = {data: [{name: 'patch', old:24, address: 'gsxt'}]}
+    ctx.body={...returnBody,...data};//Object.assign(returnBody, data);//{...returnBody,data};
     ctx.status = 200;
   }
 
