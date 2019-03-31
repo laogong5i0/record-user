@@ -35,13 +35,13 @@ exports.mysql = {
     // clientId, 获取client实例，需要通过 app.mysql.get('clientId') 获取
     db1: {
       // host
-      host: 'mysql.com',
+      host: 'localhost',
       // 端口号
       port: '3306',
       // 用户名
-      user: 'test_user',
+      user: 'root',
       // 密码
-      password: 'test_password',
+      password: '12345678',
       // 数据库名
       database: 'test',
     },
