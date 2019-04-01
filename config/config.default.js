@@ -41,7 +41,7 @@ module.exports = appInfo => ({
         // 密码
         password: '12345678',
         // 数据库名
-        database: 'test',
+        database: 'users_test',
       },
       // ...
     },

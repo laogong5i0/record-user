@@ -40,7 +40,7 @@ create table users_test
 
 -- 删除表
 drop table table_name;
-
+alter database test users_test;
 alter table users add user_id int auto_increment primary key;
 alter table users add name varchar(50) not null;
 -- alter table table1 add id int auto_increment primary key 自增字段
@@ -76,8 +76,19 @@ select * from TABLES where TABLE_SCHEMA='my_db' and TABLE_NAME='test1' \G
 -- 5 查看字段注释的方法
 --show
 show full columns from test1;
+-- 查看增表的信息；
+show full fields from '表名称';
 --在元数据的表里面看
 select * from COLUMNS where TABLE_SCHEMA='my_db' and TABLE_NAME='test1' \G
+
+-- 总共能存10位数字，末尾2位是小数，字段最大值99999999.99（小数点不算在长度内）
+decimal(10,1)
+
+-- change 修改表字段名
+alter table users change name user_name varchar(50) not null comment '用户名';
+-- modify;
+alter table test1 modify column field_name int comment '修改后的字段注释'; 
+
 
 
 /* 
@@ -91,8 +102,16 @@ select * from COLUMNS where TABLE_SCHEMA='my_db' and TABLE_NAME='test1' \G
 `remark` varchar(100),//备注
 `write_time` timestamp default current_timestamp//日期-时间 */
 
+create database if not exsits users_test;
+rename table test.users to users_test.users;
+drop database test;
+/* mysql -uroot -p123456 -e 'create database if not exists users_test'
+list_table=$(mysql -uroot -p12345678 -Nse "select table_name from information_schema.TABLES where TABLE_SCHEMA='test'")
 
-
+for table in $list_table
+do
+    mysql -uroot -p123456 -e "rename table test.$table to users_test.$table"
+done */
 
 
 -------------------------------------------------------------------------------------------
