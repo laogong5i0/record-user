@@ -1,21 +1,23 @@
 use test;
 show tables;
 
+-- 创建数据库
+create database userdb;
 -- 查看表结构
 DESC users;
 
 -- 创建用户表
 create table users
 (
-  user_id int auto_increment primary key,
+  user_id bigint(30) not null primary key,
   user_name varchar(50) not null,
-  phone long not null,
+  phone_num long not null,
   email varchar(120) default null,
-  address varchar(120) default null，
-  role int default 0 comment '0管理员， '
+  address varchar(120) default null,
+  role int default 0 comment '0普通用户，1管理员 ',
   status int default 0 comment '用户状态，是否禁用, 1为禁用， 0为正常状态, 默认值为0',
   register_time timestamp default current_timestamp comment '用户创建时间',
-  remark varchar(100) default null,
+  remark varchar(100) default null comment '备注'
 );
 
 create table user_auths

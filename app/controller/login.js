@@ -1,10 +1,12 @@
-import BaseController, { returnBody } from './baseController'
+// import BaseController, { returnBody } from './baseController'
+const BaseController = require('./baseController');
+const {returnBody} =require('../utils/static');
 
 class Login extends BaseController {
   * index() {
     const { ctx } = this;
     // const res = this.params.res;
-    console.log('jjjjjjjjjjjjjjjjjj22', ctx.req)
+    // console.log('jjjjjjjjjjjjjjjjjj22', ctx.req)
     // console.log('jjjjjjjjjjjjjjjjjj22', ctx.params)
     let data = yield this.findUser();
     ctx.body = {...returnBody, data};
@@ -14,7 +16,7 @@ class Login extends BaseController {
   * create() {
     const { ctx } = this;
     // const res = this.params.res;
-    console.log('jjjjjjjjjjjjjjjjjj223333', ctx.request.body);
+    // console.log('jjjjjjjjjjjjjjjjjj223333', ctx.request.body);
     ctx.rotateCsrfSecret();
     let data = yield this.findUser();
     ctx.body = {...returnBody, data};
