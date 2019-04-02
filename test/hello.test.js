@@ -3,7 +3,7 @@
 const assert = require('assert');
 
 describe('test/hello.test.js', () => {
-  it('should work', () => {
+  it('单元测试 hello test', () => {
     assert(Date.now() > 0);
   });
 });

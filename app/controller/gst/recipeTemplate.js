@@ -22,16 +22,21 @@ class RecipeTemplate extends BaseController {
 
   // async create() {
   //   const { ctx } = this;
+  // ctx.request.body
   //   // ctx.rotateCsrfSecret();
   //   const data = {data: [{name: 'patch', old:24, address: 'gsxt'}]}
   //   ctx.body={...returnBody,...data};//Object.assign(returnBody, data);//{...returnBody,data};
   //   ctx.status = 200;
   // }
 
-  async findGstRecipe(){
+  * findGstRecipe(){
     const {ctx} = this;
-    // console.log(returnBody);
-    ctx.body = returnBody;
+    // ctx.query
+    const url = 'http://lb-cgi.gstyun.cn/cgi-bin/pharmacyinfo/queryrecipe';
+    const result = yield ctx.curl(`${url}?${ctx.querystring}`, {
+      dataType: 'json',
+    });
+    ctx.body = result.data;
     ctx.status = 200;
   }
 }
