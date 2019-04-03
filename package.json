@@ -24,6 +24,7 @@
     "core-js": "^3.0.0",
     "egg-cors": "^2.2.0",
     "egg-mysql": "^3.0.0",
+    "egg-validate": "^2.0.2",
     "js-cookie": "^2.2.0",
     "nprogress": "^0.2.0",
     "query-string": "^6.4.2",

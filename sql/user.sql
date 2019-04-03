@@ -59,6 +59,9 @@ create table test1
 field_name int comment '字段的注释'
 )comment='表的注释';
 
+-- 修改表名
+ALTER TABLE user10 RENAME TO user11;
+
 -- 2 修改表的注释
 alter table test1 comment '修改后的表的注释';
 

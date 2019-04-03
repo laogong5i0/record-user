@@ -7,7 +7,7 @@ module.exports=(app)=>{
   router.resources(`${api_name_space}/login`, controller.login);
 
   const {gst} = controller;
-  router.get('gst', `${api_name_space}/gst/getgstrecipe`, gst.recipeTemplate.findGstRecipe);
+  router.get('gst', `${api_name_space}/gst/getgstrecipes`, gst.recipeTemplate.findGstRecipes);
   
   
 //   router.get('login', `/login`, controller.login.show);

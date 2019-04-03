@@ -1,12 +1,15 @@
 'use strict';
 
 module.exports = {
-  mysql:{
+  mysql: {
     enable: true,
     package: 'egg-mysql',
   },
-  cors:{
+  cors: {
     enable: true,
     package: 'egg-cors',
+  }, validate: {
+    enable: true,
+    package: 'egg-validate',
   }
 };
