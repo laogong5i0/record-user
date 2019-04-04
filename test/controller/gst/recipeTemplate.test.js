@@ -27,14 +27,14 @@ describe('test/controller/gst/recipeTemplate.test.js', () => {
     })
     it('检查参数是否合法', () => {
       app.mockHttpclient('http://lb-cgi.gstyun.cn/cgi-bin/pharmacyinfo/queryrecipe', {
-        data: { ...mockrecipTemp, message: '参数不合法', status: 400 },
+        // data: { ...mockrecipTemp, message: '参数不合法', status: 400 },
         status: 200,
       });
 
       return app.httpRequest()
-        .get(`/jsapi/gst/getgstrecipes?page_no=1&max_type=1`)
+        .get(`/jsapi/gst/getgstrecipes?page_no=1&max_type=`)
         .expect(200)
-        .expect({ ...mockrecipTemp, message: '参数不合法', status: 400 });
+        .expect({ data:{}, message: 'page_size required. ', status: 0 });
     })
   })
 

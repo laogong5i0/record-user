@@ -5,7 +5,7 @@ const _statusCode = {
 const _returnBody = {
   data: {},
   message: '',
-  status: _statusCode
+  status: _statusCode.success
 }
 
 module.exports.statusCode = _statusCode

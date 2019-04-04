@@ -44,6 +44,19 @@ module.exports = appInfo => ({
         // database: 'users_test',
         database: 'test',
       },
+      gst_db: {
+        // host
+        host: '127.0.0.1',
+        // 端口号
+        port: '3306',
+        // 用户名
+        user: 'root',
+        // 密码
+        password: '12345678',
+        // 数据库名
+        // database: 'users_test',
+        database: 'gst_db',
+      },
       // ...
     },
     // 是否加载到 app 上，默认开启

@@ -32,10 +32,10 @@ DESC users;
 -- 创建用户表
 create table users_test 
 (
-  user_id int auto_increment primary key,
-  user_name varchar(50) not null,
-  password varchar(50) not null,
-  address varchar(120) default null
+  user_id int auto_increment primary key comment '用户ID',
+  user_name varchar(50) not null comment '用户名',
+  password varchar(50) not null comment '密码',
+  address varchar(120) default null comment '用住址'
 );
 
 -- 删除表
@@ -104,8 +104,8 @@ alter table users modify column user_id bigint(30) not null comment '用户ID，
 `purchase_sel` varchar(6),//购/销
 `remark` varchar(100),//备注
 `write_time` timestamp default current_timestamp//日期-时间 */
-
-create database if not exsits users_test;
+-- 修改表名
+create database if not exists gst_db;
 rename table test.users to users_test.users;
 drop database test;
 /* mysql -uroot -p123456 -e 'create database if not exists users_test'

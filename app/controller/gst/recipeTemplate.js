@@ -14,9 +14,9 @@ const result = {
 
 const gst_url = 'http://lb-cgi.gstyun.cn/cgi-bin/pharmacyinfo/queryrecipe';
 const listRule = {
-  page_no: {type: "string", },
-  page_size: { type:"string", required: true },
-  max_type: {type: "string", required: false, default: "1" }
+  page_no: { type: "string", },
+  page_size: { type: "string", required: true },
+  max_type: { type: "string", required: false, default: "1" }
 }
 
 class RecipeTemplate extends BaseController {
@@ -35,24 +35,28 @@ class RecipeTemplate extends BaseController {
   //   ctx.status = 200;
   // }
 
-  * findGstRecipe() {
-    const { ctx } = this;
+  * addGstRecipe() {
 
   }
 
   * findGstRecipes() {
     const { ctx } = this;
-    try{
+    try {
       ctx.validate(listRule, ctx.query);
       const result = yield ctx.curl(`${gst_url}`, {
-        data: { method:4, max_type: 1, ...ctx.query },
+        data: { method: 4, max_type: 1, ...ctx.query },
         dataType: 'json',
       });
       ctx.body = result.data;
       ctx.status = 200;
-    }catch(err){
-      ctx.logger.warn(err.errors);
-      ctx.body= {...returnBody, ...err};
+    } catch (err) {
+      let message = '';
+      err.errors.forEach((item, index) => {
+        message += `${item.field} ${item.message}. `;
+      })
+      const result = { ...returnBody, message }
+      ctx.body = result;
+      ctx.logger.warn(result);
       ctx.status = 200;
     }
   }
