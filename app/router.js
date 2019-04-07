@@ -8,6 +8,7 @@ module.exports=(app)=>{
 
   const {gst} = controller;
   router.get('gst', `${api_name_space}/gst/getgstrecipes`, gst.recipeTemplate.findGstRecipes);
+  router.get('gst', `${api_name_space}/gst/addtemplate`, gst.recipeTemplate.addGstRecipe);
   
   
 //   router.get('login', `/login`, controller.login.show);

@@ -1,5 +1,6 @@
 // import BaseController,{returnBody} from '../baseController'
-const BaseController = require('../baseController');
+// const BaseController = require('../baseController');
+const Controller = require('beidou').Controller;
 const { returnBody } = require('../../utils/static');
 const recipe_tempalte = {
   type: 0,
@@ -19,7 +20,7 @@ const listRule = {
   max_type: { type: "string", required: false, default: "1" }
 }
 
-class RecipeTemplate extends BaseController {
+class RecipeTemplate extends Controller {
   // async index(){
   //   const { ctx } = this;
   //   ctx.body = returnBody;
@@ -36,7 +37,10 @@ class RecipeTemplate extends BaseController {
   // }
 
   * addGstRecipe() {
-
+    const {ctx} = this;
+    const result = yield ctx.service.gst.recipeTemplate.addGstRecipe({recipe_name: 'jjjjj'});
+    ctx.body = result;
+    ctx.status=200;
   }
 
   * findGstRecipes() {

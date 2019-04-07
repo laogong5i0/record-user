@@ -1,22 +1,29 @@
 const Service = require('beidou').Service;
+// ${data.recipe_id}, 
+//         ${data.recipe_name},
+//         ${data.item_list},
+//         ${data.min_dosage},
+//         ${data.product_num},
+//         ${data.standard},
+//         ${data.recipe_type},
+//         ${data.remark}
 
-
-class UserService extends Service {
+class RecipeTemplateService extends Service {
   * addGstRecipe(request) {
-    let condition = { ...request };
-    const gst_db = app.mysql.get('gst_db');
+    let data = { ...request };
+    // let data = {
+    //   recipe_id: 2,
+    //   recipe_name: 'ceshi2',
+    //   item_list: '{"item":"2", "size":"22"}',
+    //   min_dosage: 2,
+    //   product_num: 2,
+    //   standard: 2,
+    //   recipe_type:1,
+    //   remark: 'ceshi xie ding fang 2'
+    // }
+    const gst_db = this.app.mysql.get('gst_db');
     const _sql = `
-      create table if not exists recipe_template (
-        recipe_id int primary key comment '协定方ID',
-        recipe_name varchar(250) not null comment '配方名称',
-        item_list json not null comment '协定方详情',
-        min_dosage int not null comment '起做剂数',
-        product_num int not null comment '成品数',
-        standard int not null comment '包装量',
-        recipe_type int not null default 1 comment '协定方类型	int	1, //膏方 2, //丸剂 3, //散剂 4, //灌肠方 5, //足浴方 6, //雾化液 7, //汤方 8, //茶方 9, //酒方 10, //面膜',
-        remark varchar(500) comment '备注'
-      ) comment='协定方摸';
-      insert into recipe_template (
+      insert ignore into recipe_template (
         recipe_id, 
         recipe_name, 
         item_list, 
@@ -26,26 +33,23 @@ class UserService extends Service {
         recipe_type,
         remark
       ) values (
-        1, 
-        '测试1',
-        '{"item":"", "size":"2"}',
-        2,
-        3,
-        4,
-        1,
-        null
-      ) 
-      where not exists 
-      (select * from recipe_template where recipe_template.recipe_id = 1);
+        :recipe_id, 
+        :recipe_name,
+        :item_list,
+        :min_dosage,
+        :product_num,
+        :standard,
+        :recipe_type,
+        :remark
+      );
     `;
 
-    // let record = yield client1.get("users_test", condition);
-    // const rows = yield client1.query('select * from users_test where user_name=:name', {name: condition.name});
-    return record;
+    const rows = yield gst_db.query(_sql, data);
+    return rows;
   }
 }
 
-module.exports = UserService;
+module.exports = RecipeTemplateService;
 
 //     item_list	    查询列表时，没有该项	array<object>	
 //         deco_type	煎法	string	1, //先煎 2, //后下 3, // 烊化 4, //久煎 5, //冲服 6, //焗 7, //打 8, //另煎 9, //包煎 10,//打碎后煎
