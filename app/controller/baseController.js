@@ -1,31 +1,5 @@
-// import { Controller } from 'beidou';
 const Controller = require('beidou').Controller;
 
-// exports.statusCode = {
-//   success: 0
-// }
-// exports.statusCode
-
-// exports.returnBody = {
-//   data: {},
-//   message: '',
-//   status: 0
-// }
-// module.exports={
-//   statu: statusCode, 
-//   body: returnBody
-// }
-
-// export{statusCode, returnBody};
-// module.exports = (app) => {
-//   const statusCode = {
-//     success: 0
-//   };
-// const returnBody = {
-//   data: {},
-//   message: '',
-//   status: 0
-// };
 class BaseController extends Controller {
   async index() {
     this.message('Index funcion must be rewritten, please rewrite Index function.');

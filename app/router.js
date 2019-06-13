@@ -11,10 +11,10 @@ module.exports=(app)=>{
   router.get('gst', `${api_name_space}/gst/addtemplate`, gst.recipeTemplate.addGstRecipe);
   
   
-//   router.get('login', `/login`, controller.login.show);
-//   router.get(
-//     'routes',
-//     '/*',
-//     controller.routes.showGst
-//   );
+  router.get('login', `/login`, controller.login.show);
+  router.get(
+    'routes',
+    '/*',
+    controller.routes.showGst
+  );
 }

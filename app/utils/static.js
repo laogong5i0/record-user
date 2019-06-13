@@ -2,6 +2,7 @@ const _statusCode = {
   success: 0
 }
 
+// 弃用，待删除
 const _returnBody = {
   data: {},
   message: '',

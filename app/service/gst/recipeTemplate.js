@@ -9,6 +9,19 @@ const Service = require('beidou').Service;
 //         ${data.remark}
 
 class RecipeTemplateService extends Service {
+  *addGstRecipes(list){
+    let _sql =`insert ignore into recipe_template (
+      recipe_id, 
+      recipe_name, 
+      item_list, 
+      min_dosage,
+      product_num,
+      standard,
+      recipe_type,
+      remark
+    ) values ?`
+  }
+
   * addGstRecipe(request) {
     let data = { ...request };
     // let data = {
