@@ -1,4 +1,4 @@
-use test;
+use gst_db;
 show tables;
 
 -- 创建数据库
@@ -40,4 +40,4 @@ alter table users add (
 );
 insert into users_test (user_name, password) values ('admin', 'admin');
 
-select * from users_test;
+select * from recipe_template;

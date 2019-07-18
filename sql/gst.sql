@@ -1,5 +1,5 @@
 Create Database If Not Exists gst_db Character Set UTF8;
-
+mysql -uroot -p12345678
 use gst_db;
 
 create table if not exists recipe_template (

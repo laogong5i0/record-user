@@ -28,6 +28,19 @@ module.exports = appInfo => ({
       },
     ],
   },
+  middleware:['errorHandler', 'interceptor'],
+  errorHandler:{
+    match: '/jsapi'
+  },
+  interceptor:{
+    ignore(ctx){
+      let ignoreUrl = ['/login', '/jsapi/login' ]
+      let url = ctx.request.url;
+      return ignoreUrl.some(item=>{
+        return url===item;
+      })
+    }
+  },
   mysql: {
     clients: {
       // clientId, 获取client实例，需要通过 app.mysql.get('clientId') 获取

@@ -1,4 +1,6 @@
 const Service = require('beidou').Service;
+
+const GSTDBName = 'gst_db';
 // ${data.recipe_id}, 
 //         ${data.recipe_name},
 //         ${data.item_list},
@@ -10,6 +12,8 @@ const Service = require('beidou').Service;
 
 class RecipeTemplateService extends Service {
   *addGstRecipes(list){
+    // list = this.ctx.helper.objtoarr(list);
+    console.log('=------------------------------>>>>>', list);
     let _sql =`insert ignore into recipe_template (
       recipe_id, 
       recipe_name, 
@@ -19,7 +23,25 @@ class RecipeTemplateService extends Service {
       standard,
       recipe_type,
       remark
-    ) values ?`
+    ) values (
+      :recipe_id, 
+      :recipe_name,
+      :item_list,
+      :min_dosage,
+      :product_num,
+      :standard,
+      :recipe_type,
+      :remark
+    )`
+    const gst_db = this.app.mysql.get(GSTDBName);
+    try{
+      const rows = yield gst_db.query(_sql, list, (err, result, fields)=>{
+        console.log('---33333333333333333331111111');
+      });
+    }catch(err){
+      console.log('===================------', err);
+    }
+    return rows;
   }
 
   * addGstRecipe(request) {
@@ -34,7 +56,7 @@ class RecipeTemplateService extends Service {
     //   recipe_type:1,
     //   remark: 'ceshi xie ding fang 2'
     // }
-    const gst_db = this.app.mysql.get('gst_db');
+    const gst_db = this.app.mysql.get(GSTDBName);
     const _sql = `
       insert ignore into recipe_template (
         recipe_id, 

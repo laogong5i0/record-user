@@ -35,6 +35,13 @@ class RecipeTemplate extends Controller {
   //   ctx.body={...returnBody,...data};//Object.assign(returnBody, data);//{...returnBody,data};
   //   ctx.status = 200;
   // }
+  * addGstRecipes(recipes){
+    const {ctx} = this;
+    console.log('ssss:: ', recipes);
+    
+    const result = yield ctx.service.gst.recipeTemplate.addGstRecipes(recipes);
+    return result;
+  }
 
   * addGstRecipe() {
     const {ctx} = this;
@@ -52,6 +59,7 @@ class RecipeTemplate extends Controller {
         dataType: 'json',
       });
       ctx.body = result.data;
+      yield this.addGstRecipes(result.data.data);
       ctx.status = 200;
     } catch (err) {
       let message = '';
